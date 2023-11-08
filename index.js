@@ -1,5 +1,6 @@
 const http = require('http');
 
+// Express app
 const app = require('./src/app');
 
 require('dotenv').config();
