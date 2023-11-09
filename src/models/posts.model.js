@@ -1,10 +1,7 @@
-const selectAllPosts = () => {
-    return db.query('SELECT * FROM posts');
-};
+const selectAllPosts = () => db.query('SELECT * FROM posts');
 
-const selectPostsByAutor = (autorId) => {
-    // seleccion de columnas a mostrar para evitar mostrar autores_id
-    return db.query('SELECT id, titulo, descripcion, fecha_creacion, categoría FROM posts WHERE autores_id = ?', [autorId]);
-}
+const selectPostById = (postId) => db.query('SELECT * FROM posts WHERE id = ?', [postId]);
 
-module.exports = { selectAllPosts, selectPostsByAutor }
+const selectPostsByAutor = (autorId) => db.query('SELECT * FROM posts WHERE autores_id = ?', [autorId]);
+
+module.exports = { selectAllPosts, selectPostById, selectPostsByAutor };

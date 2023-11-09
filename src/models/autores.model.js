@@ -1,5 +1,5 @@
-const selectAllAutores = () => {
-    return db.query('SELECT * FROM autores');
-};
+const selectAllAutores = () => db.query('SELECT * FROM autores');
 
-module.exports = { selectAllAutores}
+const selectAutorById = (autorId) => db.query('SELECT * FROM autores WHERE id = ?', [autorId]);
+
+module.exports = { selectAllAutores, selectAutorById};
