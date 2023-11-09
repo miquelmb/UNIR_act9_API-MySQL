@@ -20,10 +20,10 @@ const getPostById = async (req, res) => {
         const { postId } = req.params;
         const [result] = await PostsModel.selectPostById(postId);
         const [autor] = await AutoresModel.selectAutorById(result[0].autores_id);
-        // Eliminar key-value de autores_id y añadir el único autor
+        // Eliminar propiedad de autores_id y añadir propiedad de autor
         delete result[0].autores_id;
         result[0].autor = autor[0];
-        
+
         res.json(result[0]);
     } catch (error) {
         res.json({ fatal: error.message });
@@ -44,4 +44,15 @@ const getPostsByAutor = async (req, res) => {
     };
 };
 
-module.exports = { getAllPosts, getPostById, getPostsByAutor };
+const createPost = async (req, res) => {
+    try {
+        const [result] = await PostsModel.insertPost(req.body);
+        const [post] = await PostsModel.selectPostById(result.insertId);
+        res.json(post[0]);
+
+    } catch (error) {
+        res.json({ fatal: error.message })
+    }
+};
+
+module.exports = { getAllPosts, getPostById, getPostsByAutor, createPost };

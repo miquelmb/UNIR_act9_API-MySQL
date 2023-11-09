@@ -4,4 +4,6 @@ const selectPostById = (postId) => db.query('SELECT * FROM posts WHERE id = ?', 
 
 const selectPostsByAutor = (autorId) => db.query('SELECT * FROM posts WHERE autores_id = ?', [autorId]);
 
-module.exports = { selectAllPosts, selectPostById, selectPostsByAutor };
+const insertPost = ({titulo, descripcion, fecha_creacion, categoria, autores_id}) => db.query('INSERT INTO posts (titulo, descripcion, fecha_creacion, categoria, autores_id) values (?,?,?,?,?)', [titulo, descripcion, fecha_creacion, categoria, autores_id]);
+
+module.exports = { selectAllPosts, selectPostById, selectPostsByAutor, insertPost };

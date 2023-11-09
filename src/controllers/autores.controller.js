@@ -9,5 +9,16 @@ const getAllAutores = async (req, res) => {
     }
 };
 
+const createAutor = async (req, res) => {
+    try {
+        const [result] = await AutoresModel.insertAutor(req.body);
+        const [autor] = await AutoresModel.selectAutorById(result.insertId);
+        res.json(autor[0]);
 
-module.exports = { getAllAutores };
+    } catch (error) {
+        res.json({ fatal: error.message })
+    }
+};
+
+
+module.exports = { getAllAutores, createAutor };
