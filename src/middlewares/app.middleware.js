@@ -9,4 +9,4 @@ const logAllPetitions = async (req, res, next) => {
     next();
 };
 
-module.exports = {logAllPetitions}
+module.exports = { logAllPetitions }

@@ -34,7 +34,7 @@ const getPostsByAutor = async (req, res) => {
     const { autorId } = req.params;
     try {
         const [result] = await PostsModel.selectPostsByAutor(autorId);
-        // Eliminar el id del autor al recuperar los posts de un autor (sin modificar el select * del model por si hubiera futuros cambios en la tabla posts)
+        // Elimina autores_id al recuperar posts de un autor (para no modificar el select * del model por si hubiera futuros cambios en la tabla posts)
         for (let autor of result) {
             delete autor.autores_id;
         }
