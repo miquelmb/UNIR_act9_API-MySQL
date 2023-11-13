@@ -2,11 +2,11 @@ const AutoresModel = require('../models/autores.model');
 
 const getAllAutores = async (req, res) => {
     try {
-        const [result] = await AutoresModel.selectAllAutores()
+        const [result] = await AutoresModel.selectAllAutores();
         res.json(result);
     } catch (error) {
         res.json({ fatal: error.message })
-    }
+    };
 };
 
 const getAutorById = async (req, res) => {
@@ -16,7 +16,7 @@ const getAutorById = async (req, res) => {
         res.json(result[0]);
     } catch (error) {
         res.json({ fatal: error.message })
-    }
+    };
 
 };
 
@@ -27,8 +27,8 @@ const createAutor = async (req, res) => {
         res.json(autor[0]);
 
     } catch (error) {
-        res.json({ fatal: error.message })
-    }
+        res.json({ fatal: error.message });
+    };
 };
 
 module.exports = { getAllAutores, getAutorById, createAutor };

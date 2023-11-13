@@ -52,7 +52,7 @@ const createPost = async (req, res) => {
 
     } catch (error) {
         res.json({ fatal: error.message })
-    }
+    };
 };
 
 module.exports = { getAllPosts, getPostById, getPostsByAutor, createPost };
